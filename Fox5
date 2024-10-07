@@ -1,0 +1,77 @@
+# محتوى ملف HTML
+html_content = """<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب سحب</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin: auto;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>طلب سحب</h2>
+    <label for="amount">المبلغ المراد سحب:</label><br>
+    <input type="text" id="amount" placeholder="أدخل المبلغ" /><br><br>
+
+    <label for="bank">اختيار البنك:</label><br>
+    <select id="bank">
+        <option value="usdt">USDT</option>
+    </select><br><br>
+
+    <label for="address">عنوان USDT TRC20:</label><br>
+    <input type="text" id="address" placeholder="أدخل عنوان USDT TRC20" /><br><br>
+
+    <button onclick="confirmWithdrawal()">تأكيد السحب</button>
+
+    <div id="notification" style="margin-top: 20px;"></div>
+
+    <p style="margin-top: 20px; color: #666;">يستغرق السحب 5 دقائق للوصول.</p>
+</div>
+
+<script>
+    function confirmWithdrawal() {
+        var amount = document.getElementById("amount").value;
+        var address = document.getElementById("address").value;
+
+        if (amount === "" || address === "") {
+            alert("يرجى ملء جميع الحقول!");
+            return;
+        }
+
+        document.getElementById("notification").innerText = "تم إرسال طلب السحب إلى العنوان: " + address;
+    }
+</script>
+
+</body>
+</html>
+"""
+
+# حفظ المحتوى في ملف HTML
+with open('withdraw_request.html', 'w', encoding='utf-8') as file:
+    file.write(html_content)
+
+print("تم إنشاء الملف withdraw_request.html بنجاح.")
